@@ -1,0 +1,33 @@
+{
+  "name": "breakpoint.js",
+  "version": "1.0.0",
+  "description": "A tiny library to make your JavaScript a bit more responsive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew--r/breakpoint.git"
+  },
+  "keywords": [
+    "js",
+    "responsive"
+  ],
+  "author": "Andrew Romanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrew--r/breakpoint/issues"
+  },
+  "homepage": "https://github.com/andrew--r/breakpoint#readme",
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.5.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
