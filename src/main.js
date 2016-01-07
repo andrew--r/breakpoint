@@ -1,35 +1,9 @@
-export default {
-	below(resolution, callback, context = null) {
-		let checker = function() {
-			return window.innerWidth < resolution;
-		};
+import Breakpoint from './modules/breakpoint.js';
 
-		attachEventListeners(checker, callback, context);
-	},
+Breakpoint.between([768, 1024], () => {
+	console.log('Current screen width is between 768 and 1024 pixels.');
+});
 
-	above(resolution, callback, context = null) {
-		let checker = function() {
-			return window.innerWidth > resolution;
-		};
-
-		attachEventListeners(checker, callback, context);
-	},
-
-	between(resolutions, callback, context = null) {
-		let checker = function() {
-			return window.innerWidth > resolutions[0] && window.innerWidth < resolutions[1];
-		};
-
-		attachEventListeners(checker, callback, context);
-	}
-};
-
-function attachEventListeners(checker, callback, context) {
-	document.addEventListener('DOMContentLoaded', () => {
-		checker() && callback.call(context);
-	});
-
-	window.addEventListener('resize', () => {
-		checker() && callback.call(context);
-	});
-};
+Breakpoint.above(1024, function() {
+	console.log('Current screen width is', this.innerWidth);
+}, window);

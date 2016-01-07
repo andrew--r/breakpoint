@@ -1,0 +1,27 @@
+/* BASE */
+body {
+	font-size: 14px;
+	
+	background: #f7f7f7;
+}
+
+.container {
+	max-width: 980px;
+	margin: auto;
+	padding: 10px 20px;
+	
+	background: #fff;
+}
+
+
+/* HEADER */
+.header {
+	display: flex;
+	align-items: baseline;
+}
+
+.header__title {
+	margin: 0;
+}
+
+.header__subtitle {}

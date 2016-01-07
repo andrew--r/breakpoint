@@ -5,6 +5,10 @@ import buffer from 'vinyl-buffer';
 import browserify from 'browserify';
 import babel from 'babelify';
 
+import postcss from 'gulp-postcss';
+import autoprefixer from 'gulp-autoprefixer';
+import cssnano from 'gulp-cssnano';
+
 import pjson from './package.json';
 
 const paths = {
@@ -23,6 +27,18 @@ gulp.task('js', () => {
 		.pipe(gulp.dest(paths.dist));
 });
 
+gulp.task('styles', () => {
+	return gulp
+		.src(`${paths.src}/*.css`)
+		.pipe(autoprefixer({
+			browsers: ['last 3 versions'],
+			cascade: false
+		}))
+		.pipe(cssnano())
+		.pipe(gulp.dest(`${paths.dist}`));
+});
+
 gulp.task('watch', () => {
-	gulp.watch(`${paths.src}/*`, ['js']);
+	gulp.watch(`${paths.src}/*.js`, ['js']);
+	gulp.watch(`${paths.src}/*.css`, ['styles']);
 });
