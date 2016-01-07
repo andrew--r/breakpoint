@@ -1,23 +1,23 @@
 export default {
-	below(resolution, callback, context = null) {
+	below(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth < resolution;
+			return window.innerWidth < width;
 		};
 
 		attachEventListeners(checker, callback, context);
 	},
 
-	above(resolution, callback, context = null) {
+	above(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > resolution;
+			return window.innerWidth > width;
 		};
 
 		attachEventListeners(checker, callback, context);
 	},
 
-	between(resolutions, callback, context = null) {
+	between(widths, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > resolutions[0] && window.innerWidth < resolutions[1];
+			return window.innerWidth > widths[0] && window.innerWidth < widths[1];
 		};
 
 		attachEventListeners(checker, callback, context);
