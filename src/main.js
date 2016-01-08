@@ -1,7 +1,7 @@
 export default {
 	below(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth < width;
+			return screenWidth() < width;
 		};
 
 		attachEventListeners(checker, callback, context);
@@ -9,7 +9,7 @@ export default {
 
 	above(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > width;
+			return screenWidth() > width;
 		};
 
 		attachEventListeners(checker, callback, context);
@@ -17,7 +17,7 @@ export default {
 
 	between(widths, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > widths[0] && window.innerWidth < widths[1];
+			return screenWidth() > widths[0] && screenWidth() < widths[1];
 		};
 
 		attachEventListeners(checker, callback, context);
@@ -32,4 +32,8 @@ function attachEventListeners(checker, callback, context) {
 	window.addEventListener('resize', () => {
 		checker() && callback.call(context);
 	});
-};
+}
+
+function screenWidth() {
+	return document.documentElement.clientWidth;
+}
