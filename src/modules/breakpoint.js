@@ -1,23 +1,23 @@
 export default {
-	below(resolution, callback, context = null) {
+	below(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth < resolution;
+			return screenWidth() < width;
 		};
 
 		attachEventListeners(checker, callback, context);
 	},
 
-	above(resolution, callback, context = null) {
+	above(width, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > resolution;
+			return screenWidth() > width;
 		};
 
 		attachEventListeners(checker, callback, context);
 	},
 
-	between(resolutions, callback, context = null) {
+	between(widths, callback, context = null) {
 		let checker = function() {
-			return window.innerWidth > resolutions[0] && window.innerWidth < resolutions[1];
+			return screenWidth() > widths[0] && screenWidth() < widths[1];
 		};
 
 		attachEventListeners(checker, callback, context);
@@ -32,4 +32,8 @@ function attachEventListeners(checker, callback, context) {
 	window.addEventListener('resize', () => {
 		checker() && callback.call(context);
 	});
-};
+}
+
+function screenWidth() {
+	return document.documentElement.clientWidth;
+}
