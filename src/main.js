@@ -1,9 +1,10 @@
-import Breakpoint from './modules/breakpoint.js';
+import breakpoint from './modules/breakpoint.js';
 
-Breakpoint.between([768, 1024], () => {
-	console.log('Current screen width is between 768 and 1024 pixels.');
-});
+let config = {
+  query: '(min-width: 1024px)',
+  success: () => console.log('Window width is above 1024px'),
+  fail: () => console.log('Window width is below 1024px'),
+  context: window
+};
 
-Breakpoint.above(1024, function() {
-	console.log('Current screen width is', this.innerWidth);
-}, window);
+breakpoint(config);

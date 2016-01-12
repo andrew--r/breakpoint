@@ -22,38 +22,45 @@
 	</header>
 
 <pre><code class="language-javascript">// Use this library if you need to do some
-// stuff in dependence on current screen width
+// stuff in dependence on current screen width.
 
 // ✓ Available to use as AMD, CommonJS or ES2015 module
 // ✓ No dependencies
-// ✓ Small size (~1kb)
-// ✓ Just three simple methods, no complicated APIs
+// ✓ Small size (~350 bytes uncompiled, ~850 bytes compiled)
+// ✓ Just one function, no complicated APIs
 
 // Example written in ES2015
-import Breakpoint from './modules/breakpoint.js';
+import breakpoint from './modules/breakpoint.js';
 
-// Breakpoint object has three methods:
-// 1. Breakpoint.below(width, callback, context)
-// 2. Breakpoint.above(width, callback, context)
-// 3. Breakpoint.between([minWidth, maxWidth], callback, context),
+let config = {
+  // media query
+  // type: string
+  // required
+  query: '(min-width: 1024px)',
 
-// where
-// • width, minWidth, maxWidth — number;
-// • callback — function to call when
-// • condition (current screen width is below,
-//   above or between specified width) is true;
-// • context — execution context for the callback, default is null.
+  // callback to call when the query result is true
+  // type: function
+  // required
+  success: () => console.log('Window width is above 1024px'),
 
-// Let's see it in action.
-// Try to resize the window and open browser's console
-Breakpoint.between([768, 1024], () => {
-	console.log('Current screen width is between 768 and 1024 pixels.');
-});
+  // function to call when the query result is false
+  // type: function
+  // optional
+  fail: () => console.log('Window width is below 1024px'),
 
-// Custom context for the callback
-Breakpoint.above(1024, function() {
-	console.log('Current screen width is', this.innerWidth);
-}, window);
+  // context to set on success and fail callbacks
+  // type: object
+  // default: null
+  // optional
+  context: window
+};
+
+// breakpoint will be automatically listening for changes
+let destroyBreakpoint = breakpoint(config);
+
+// if you need to stop listening for changes,
+// just call the assigned variable
+destroyBreakpoint();
 </code></pre>
 </div>
 
