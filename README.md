@@ -26,5 +26,3 @@ let destroyBreakpoint = breakpoint({
   context: null // optional, null is set by default
 });
 ```
-
-## Browser capabil
