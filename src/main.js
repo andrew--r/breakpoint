@@ -1,39 +1,10 @@
-export default {
-	below(width, callback, context = null) {
-		let checker = function() {
-			return screenWidth() < width;
-		};
+export default function({query, succes, fail, context = null}) {
+	let mql = window.matchMedia(query);
+	let handler = function() {
+		this.matches ? success.call(context) : fail.call(context);
+	}.bind(mql);
 
-		attachEventListeners(checker, callback, context);
-	},
+	mql.addListener(handler);
 
-	above(width, callback, context = null) {
-		let checker = function() {
-			return screenWidth() > width;
-		};
-
-		attachEventListeners(checker, callback, context);
-	},
-
-	between(widths, callback, context = null) {
-		let checker = function() {
-			return screenWidth() > widths[0] && screenWidth() < widths[1];
-		};
-
-		attachEventListeners(checker, callback, context);
-	}
+	document.addEventListener('DOMContentLoaded', handler);
 };
-
-function attachEventListeners(checker, callback, context) {
-	document.addEventListener('DOMContentLoaded', () => {
-		checker() && callback.call(context);
-	});
-
-	window.addEventListener('resize', () => {
-		checker() && callback.call(context);
-	});
-}
-
-function screenWidth() {
-	return document.documentElement.clientWidth;
-}
