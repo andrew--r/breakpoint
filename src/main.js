@@ -5,6 +5,7 @@ export default function({query, succes, fail, context = null}) {
 	}.bind(mql);
 
 	mql.addListener(handler);
-
 	document.addEventListener('DOMContentLoaded', handler);
+
+  return () => mql.removeListener(handler);
 };
