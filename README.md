@@ -8,7 +8,7 @@ Breakpoint.js uses `window.matchMedia`, so it [supports](http://caniuse.com/#fea
  ```
 ✓ Available to use as AMD, CommonJS or ES2015 module
 ✓ No dependencies
-✓ Small size (~350 bytes uncompiled, ~850 bytes compiled)
+✓ Small size (~350 bytes uncompiled, ~810 bytes compiled)
 ✓ Just one function, no complicated APIs
 ```
 
