@@ -1,6 +1,6 @@
 {
   "name": "breakpoint.js",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "A tiny library to make your JavaScript a bit more responsive",
   "main": "index.js",
   "scripts": {
